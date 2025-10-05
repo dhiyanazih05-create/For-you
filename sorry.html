@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Untuk Syira 💖</title>
+  <style>
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeOut {
+      from {opacity: 1; transform: translateY(0);}
+      to {opacity: 0; transform: translateY(-20px);}
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FFE6EB, #FFF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .slide.active {
+      display: flex;
+      animation: fadeIn 0.8s ease forwards;
+    }
+    h1 {
+      color: #FF6B9A;
+      font-size: 28px;
+      animation: fadeIn 1s ease both;
+    }
+    p {
+      color: #555;
+      font-size: 16px;
+      margin: 10px 0 20px;
+      animation: fadeIn 1.2s ease both;
+    }
+    button {
+      background: #FF6B9A;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 5px 10px rgba(255,107,154,0.3);
+      transition: transform 0.2s, background 0.3s;
+      animation: fadeIn 1.4s ease both;
+    }
+    button:hover {
+      background: #ff4e82;
+      transform: scale(1.05);
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      display: none;
+      animation: fadeIn 0.9s ease both;
+    }
+
+    @keyframes floatUp {
+      from {transform: translateY(0); opacity: 1;}
+      to {transform: translateY(-100px); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lagu autoplay -->
+  <audio autoplay loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/0wll2v4ozv90ljp3ss8cg/Staying-Lizzy.mp3?rlkey=ksjyt5an65m8h3sl0uh7rgr2i&dl=0" type="audio/mpeg">
+  </audio>
+
+  <div id="slide1" class="slide active">
+    <img src="PUT_IMAGE_LINK_HERE" alt="Gambar Syira" id="img1">
+    <h1>Hai Syira 🌸</h1>
+    <p>Maaf kalau saya buat Syira terasa hati.</p>
+    <button onclick="nextSlide()">Seterusnya ➜</button>
+  </div>
+
+  <div id="slide2" class="slide">
+    <img src="https://ik.imagekit.io/Dnaxih/IMG20250922225833_01.jpg?updatedAt=1759700829243" alt="Gambar Syira" id="img2">
+    <h1>I'm sorry</h1>
+    <p>Saya minta maaf tau, I shouldn't said that at first place.</p>
+    <p>Dah la penat en semalam 😔</p>
+    <button onclick="nextSlide()">Seterusnya ➜</button>
+  </div>
+
+  <div id="slide3" class="slide">
+    <img src="https://ik.imagekit.io/Dnaxih/IMG20250923210058.jpg?updatedAt=1759700873851" alt="Gambar Syira" id="img3">
+    <h1>Smile 💌</h1>
+    <p>Smile!!! Jangan sembunyikan senyuman tu 😄</p>
+    <p>Rugi tau kalau hilangkan senyuman Syira</p>
+    <button onclick="nextSlide()">Seterusnya ➜</button>
+  </div>
+
+  <div id="slide4" class="slide">
+    <img src="PUT_IMAGE_LINK_HERE" alt="Gambar Syira" id="img4">
+    <h1>I'm appreciate you 🌷</h1>
+    <p>Terima kasih sebab masih sabar dengan saya.</p>
+    <p>Thanks for still staying here eventho saya tak seberapa 💖</p>
+    <button onclick="nextSlide()">Seterusnya ➜</button>
+  </div>
+
+  <div id="slide5" class="slide">
+    <img src="https://ik.imagekit.io/Dnaxih/IMG-20251006-WA0002.jpg?updatedAt=1759701452539" alt="Gambar Syira" id="img5">
+    <h1>You're special</h1>
+    <p>Trust me, there's no one can replace your place here 💫</p>
+    <p>I'm really sorry ;)</p>
+    <button onclick="nextSlide()">Seterusnya ➜</button>
+  </div>
+
+  <div id="slide6" class="slide">
+    <img src="https://ik.imagekit.io/Dnaxih/IMG-20251006-WA0003.jpg?updatedAt=1759701452621E" alt="Gambar Syira" id="img6">
+    <h1>Terima kasih tengok sampai habis Syira 🌹</h1>
+    <p>Saya janji to avoid something that will hurt you later or sooner.</p>
+    <button id="loveBtn" onclick="showLove()">💖</button>
+  </div>
+
+  <script>
+    let current = 1;
+
+    function nextSlide() {
+      const currentSlide = document.getElementById(`slide${current}`);
+      currentSlide.style.animation = 'fadeOut 0.6s forwards';
+      setTimeout(() => {
+        currentSlide.classList.remove('active');
+        current++;
+        if (current > 6) current = 1;
+        const next = document.getElementById(`slide${current}`);
+        next.classList.add('active');
+      }, 600);
+    }
+
+    // Paparkan gambar jika ada link sebenar
+    document.querySelectorAll('img').forEach(img => {
+      if (img.src.includes('PUT_IMAGE_LINK_HERE'))
+        img.style.display = 'none';
+      else
+        img.style.display = 'block';
+    });
+
+    // Animasi love
+    function showLove() {
+      const body = document.body;
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '💖';
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        heart.style.opacity = 0.8;
+        heart.style.animation = `floatUp ${3 + Math.random() * 3}s ease-in forwards`;
+        body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
